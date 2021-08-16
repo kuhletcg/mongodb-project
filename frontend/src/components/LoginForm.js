@@ -1,31 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Submit } from "../redux/actions/LoginForm";
-import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
-import { useHistory } from "react-router-dom";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Container,
+  Row,
+  Col,
+} from "reactstrap";
+import useForm from "./useForm";
 
-function LoginForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    password: "",
-  });
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.recipe && formData.password) {
-      dispatch(addName(formData));
-      setFormData({
-        name: "",
-        Password: "",
-      });
-    }
-  };
+const LoginForm = () => {
+  const { handleInputs, handleLogIn, loginForm } = useForm();
 
   return (
     <Container>
@@ -58,6 +45,6 @@ function LoginForm() {
       </Form>
     </Container>
   );
-}
+};
 
 export default LoginForm;
